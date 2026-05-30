@@ -2,13 +2,15 @@
 
 ## Project Overview
 
-This project analyses Great Britain retail sales trends using the official ONS Retail Sales Index dataset. The aim is to understand how retail sales, online sales, and sector performance changed before, during, and after the pandemic period.
+This project analyses Great Britain retail sales trends using the official Office for National Statistics (ONS) Retail Sales Index dataset.
 
-The project uses Python for data cleaning, SQL for business analysis, and Power BI for dashboard reporting.
+The aim of the project is to understand how retail sales, online sales, and sector performance changed before, during, and after the pandemic period.
+
+The project uses Python for data inspection and cleaning, SQL for business analysis, and Power BI for dashboard reporting.
 
 ## Business Questions
 
-This project answers the following questions:
+This project answers the following business questions:
 
 1. How has online retail sales share changed over time?
 2. Which retail sectors performed strongest after the pandemic?
@@ -18,11 +20,19 @@ This project answers the following questions:
 
 ## Dataset
 
-Source: Office for National Statistics (ONS) Retail Sales Index time series dataset.
+The dataset used in this project is the official ONS Retail Sales Index time series dataset.
 
-The raw dataset contained hundreds of retail sales indicators, including value indexes, volume indexes, online sales percentage, and average weekly retail sales.
+The raw dataset included retail sales value indexes, volume indexes, online sales percentage, average weekly retail sales, and sector-level retail indicators.
 
-For this project, selected retail indicators were cleaned and reshaped into dashboard-ready datasets.
+The original raw file contained:
+
+- 657 rows
+- 622 columns
+- Metadata rows
+- Monthly retail sales records
+- Multiple retail sector indicators
+
+For this project, selected indicators were cleaned and transformed into dashboard-ready datasets.
 
 ## Tools Used
 
@@ -57,68 +67,125 @@ uk-retail-sales-trend-analysis/
 ├── sql/
 │   └── business_questions.sql
 └── README.md
+```
 
-Data Cleaning Process
+## Data Cleaning Process
 
-The raw ONS file contained 657 rows and 622 columns, including metadata rows and many retail indicators.
+The raw ONS dataset was wide and contained many indicators, so a focused cleaning process was required before analysis.
 
 The cleaning process included:
 
-Removing metadata rows such as CDID, Unit, Release Date, and Next Release
-Filtering to monthly time periods
-Converting period values into date format
-Selecting relevant retail sales indicators
-Creating a wide dataset for KPI and trend analysis
-Creating a long dataset for sector comparison
-Calculating year-on-year growth by retail sector
-Grouping records into pre-pandemic, pandemic, and post-pandemic periods
-SQL Analysis
+- Inspecting the raw dataset structure
+- Removing metadata rows such as CDID, Unit, Release Date, and Next Release
+- Filtering the dataset to monthly time periods
+- Converting period values into date format
+- Selecting relevant retail sales indicators
+- Creating a wide dataset for KPI and trend analysis
+- Creating a long dataset for sector comparison
+- Calculating year-on-year growth by retail sector
+- Grouping records into pre-pandemic, pandemic, and post-pandemic periods
 
-SQL was used to answer business questions including:
+## Cleaned Datasets
 
-Latest retail sales indicators
-Average sales index by sector and period group
-Top sector-months by year-on-year growth
-Post-pandemic recovery ranking by sector
-Online sales trend by year
-Key Insights
-Online retail sales share increased from 12.48% in 2015 to 27.83% in 2026.
-Non-store retailing showed the strongest post-pandemic recovery, with 74.79% growth compared with the pre-pandemic average.
-Clothing and footwear experienced the sharpest pandemic disruption, followed by strong recovery later.
-Online sales peaked during the pandemic period and remained much higher than pre-pandemic levels.
-Retail sector performance shows clear structural change after 2020.
-Power BI Dashboard
+Two cleaned datasets were created:
 
-The dashboard includes:
+### 1. Wide Dataset
 
-Online sales share over time
-Sales index by retail sector
-Average sector performance before, during, and after the pandemic
-Latest internet sales share KPI
-Latest average weekly retail sales KPI
-Key business insights
-Skills Demonstrated
-Public dataset analysis
-Data cleaning with Python and Pandas
-Time-series data preparation
-SQL business analysis
-Power BI dashboard design
-KPI reporting
-Retail and e-commerce analytics
-GitHub project documentation
-Conclusion
+File:
 
-This project demonstrates how official public retail data can be transformed into clear business insights. It shows the growth of online retail, sector-level recovery trends, and post-pandemic changes in Great Britain retail sales.
+```text
+data/cleaned/cleaned_retail_sales_wide.csv
+```
 
+Purpose:
 
-Then save it.
+- KPI analysis
+- Online sales trend analysis
+- Latest retail indicator reporting
+- Power BI cards and time-series charts
 
-## Commit README
+### 2. Long Dataset
 
-Run:
+File:
 
-```powershell
-git add README.md
-git commit -m "Update retail sales project README"
-git push
-git status
+```text
+data/cleaned/cleaned_retail_sales_long.csv
+```
+
+Purpose:
+
+- Sector comparison
+- Pre-pandemic, pandemic, and post-pandemic analysis
+- Year-on-year growth analysis
+- Power BI sector charts
+
+## SQL Analysis
+
+SQL was used to answer business questions and create an analysis report.
+
+The SQL analysis includes:
+
+- Latest retail sales indicators
+- Average sales index by sector and period group
+- Top sector-months by year-on-year growth
+- Post-pandemic recovery ranking by sector
+- Online sales trend by year
+
+SQL outputs were saved in:
+
+```text
+reports/sql_analysis_results.md
+sql/business_questions.sql
+data/cleaned/retail_sales.db
+```
+
+## Key Insights
+
+- Online retail sales share increased from 12.48% in 2015 to 27.83% in 2026.
+- Non-store retailing showed the strongest post-pandemic recovery, with 74.79% growth compared with the pre-pandemic average.
+- Clothing and footwear experienced the sharpest pandemic disruption, followed by strong recovery later.
+- Online sales peaked during the pandemic period and remained much higher than pre-pandemic levels.
+- Retail sector performance shows clear structural change after 2020.
+
+## Power BI Dashboard
+
+![Dashboard Overview](screenshots/dashboard_overview.png)
+
+The Power BI dashboard includes:
+
+- Online sales share over time
+- Sales index by retail sector
+- Average sector performance before, during, and after the pandemic
+- Latest internet sales share KPI
+- Latest average weekly retail sales KPI
+- Key business insights
+
+## Skills Demonstrated
+
+- Public dataset analysis
+- Data inspection with Python
+- Data cleaning with Pandas
+- Time-series data preparation
+- SQL business analysis
+- SQLite database creation
+- Power BI dashboard design
+- KPI reporting
+- Retail and e-commerce analytics
+- GitHub project documentation
+
+## Portfolio Value
+
+This project is relevant for entry-level data analyst roles because it demonstrates the full analytics workflow:
+
+1. Finding and using an official public dataset
+2. Inspecting and cleaning raw data
+3. Transforming data for analysis
+4. Writing SQL queries to answer business questions
+5. Building a Power BI dashboard
+6. Communicating insights clearly through GitHub documentation
+
+## Conclusion
+
+This project demonstrates how official public retail data can be transformed into clear business insights.
+
+It highlights the growth of online retail, sector-level recovery trends, and post-pandemic changes in Great Britain retail sales.
